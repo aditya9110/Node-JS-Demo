@@ -57,5 +57,40 @@ validator.validateName = (name) =>
     throw err;
   }
 }
+```
+## User.js
+### Register
+```js
+exports.registerUser async (req, res, next) => {
+  //Code here
+  try {
+    var name = req.body.name;
+    var emailId = req.body.emailId;
+    var password = req.body.password;
+    var phoneNo = req.body.phoneNo;
 
+    if (validator.validateName(name) && validator.validateEmailId(emailId) && validator.validatePassword(password) && validator.validatePhoneNo (phoneNo)) {
+      let userCheck await models.userModel.find({"emailId": emailId})
+      if (userCheck.length == 0) {
+        let newUser await models.userModel.create(req.body);
+        if (newUser!= null) {
+          res.status(201).json({"message": "User registered successfully!!"})
+        }
+        else {
+          let err = new Error("Registration Failed. Please try again...");
+          err.status = 400;
+          throw(err);
+        }
+      }
+      else {
+        let err = new Error("User already exists!");
+        err.status = 409;
+        throw(err);
+      }
+    }
+  } catch (err) {
+    res.status(err.status).send({"message": err.message})
+    next (err)
+  }
+}
 ```
