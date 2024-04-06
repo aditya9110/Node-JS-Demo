@@ -105,3 +105,25 @@ exports.registerUser async (req, res, next) => {
   }
 }
 ```
+
+### Login
+```js
+exports.loginUser = async (req, res, next) => {
+  //Code here
+  try {
+    let checkUser await models.userModel.find({"emailId": req.body.emailId});
+    console.log(checkUser);
+    if (checkUser.length > 0) {
+      res.json({"message": "User login successful"})
+    }
+    else {
+      let err = new Error("Please register yourself to avail the services");
+      err.status = 401;
+      throw(err);
+    }
+  } catch (err) {
+    res.status(err.status).send({"message": err.message})
+    next (err)
+  }
+}
+```
