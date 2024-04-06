@@ -127,3 +127,25 @@ exports.loginUser = async (req, res, next) => {
   }
 }
 ```
+
+### View Packages
+```js
+exports.viewPackages = async (req, res, next) => {
+  //Code here
+  try {
+    let packages = await models.packageModel.find({}, {"_id": 0, "__v": 0});
+    console.log(packages);
+    if (packages.length > 0) {
+      res.send(packages);
+    }
+    else {
+      let err = new Error("Unable to load Package details!! Please try again...");
+      err.status = 400;
+      throw(err);
+    }
+  } catch (err) {
+    res.status(400).send({"message": "Unable to load Package details!! Please try again..."})
+    next (err)
+  }
+}
+```
