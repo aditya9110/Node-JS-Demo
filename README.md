@@ -1,5 +1,16 @@
 # Node-JS-Demo
 
+## Errorlogger.js
+```js
+let errorLogger function (err, req, res, next) {
+  const logMessage = "" + res.statusCode + " " + err + "\n";
+  fs.appendFile('errorLogger.txt', logMessage, (err) => {
+    if (err) return next(err);
+  });
+  next();
+}
+```
+
 ## Validators.js
 ```js
 validator.validatePassword = (password) => {
@@ -84,7 +95,7 @@ exports.registerUser async (req, res, next) => {
       }
       else {
         let err = new Error("User already exists!");
-        err.status = 409;
+        err.status = 400;
         throw(err);
       }
     }
