@@ -149,3 +149,38 @@ exports.viewPackages = async (req, res, next) => {
   }
 }
 ```
+
+### Book Slot
+```js
+exports.bookSlot async (req, res, next) => {
+  //Code here
+  try {
+    shiftFrom req.body.bookings.shiftFrom
+    shiftTo req.body.bookings.shiftTo
+    shiftType = req.body.bookings.shiftType
+
+    let checkUser = await models.userModel.find({"emailId": req.body.emailId});
+    console.log(checkUser);
+    if (checkUser.length > 0 && validator.validateShiftType(shiftType)) {
+      let booking = await models.userModel.findOneAndUpdate({"emailId": req.body.emailId), {"bookings.shiftFrom": shiftFrom, "bookings.shiftTo": shiftTo, "bookings.shiftType": shiftType), (new: true))
+      console.log(booking);
+      if (booking) {
+        res.json({"message": "Booking successful"})
+      }
+      else {
+        let err = new Error("No such user. Please check your credentials");
+        err.status = 401;
+        throw(err);
+      }
+    }
+    else {
+      let err = new Error("No such user. Please check your credentials");
+      err.status = 401;
+      throw(err);
+    }
+  } catch (err) {
+    res.status(401).send({"message": "No such user. Please check your credentials"})
+    next (err)
+  }
+}
+```
