@@ -1,5 +1,12 @@
 # Node-JS-Demo
 
+## Invalid Route
+```js
+router.all("*", (req, res) => {
+  res.status(404).json({ "message": "Invalid path request" });
+})
+```
+
 ## Errorlogger.js
 ```js
 let errorLogger function (err, req, res, next) {
@@ -183,4 +190,14 @@ exports.bookSlot async (req, res, next) => {
     next (err)
   }
 }
+```
+
+### Cancel Booking
+```js
+
+```
+
+### Delete User
+```js
+
 ```
