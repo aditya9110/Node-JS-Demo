@@ -135,7 +135,7 @@ exports.viewPackages = async (req, res, next) => {
   try {
     let packages = await models.packageModel.find({}, {"_id": 0, "__v": 0});
     console.log(packages);
-    if (packages.length > 0) {
+    if (packages) {
       res.send(packages);
     }
     else {
@@ -144,7 +144,7 @@ exports.viewPackages = async (req, res, next) => {
       throw(err);
     }
   } catch (err) {
-    res.status(400).send({"message": "Unable to load Package details!! Please try again..."})
+    res.status(err.status).send({"message": err.message})
     next (err)
   }
 }
