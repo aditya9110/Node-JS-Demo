@@ -203,14 +203,17 @@ exports.deleteUser = async (req, res, next) {
 //Code here
   try {
     const emailId = req.params.emailId;
-    let checkUser = await models.userModel.find({ "emailId" emailId }); console.log(checkUser);
+    let checkUser = await models.userModel.find({ "emailId": emailId });
+    console.log(checkUser);
     if (checkUser.length > 0) {
-      let deletedUser = await models.userModel.deleteOne({ "emailId": emailId }); console.log(deletedUser)
+      let deletedUser = await models.userModel.deleteOne({ "emailId": emailId });
+      console.log(deletedUser)
       if (deletedUser) {
         res.json({ "message": "User is removed" })
       }
       else {
-        let err = new Error("Unable to delete the user. Please try again..."); err.status = 400;
+        let err = new Error("Unable to delete the user. Please try again...");
+        err.status = 400;
         throw (err);
       }
     }
