@@ -95,7 +95,7 @@ exports.registerUser async (req, res, next) => {
       }
       else {
         let err = new Error("User already exists!");
-        err.status = 400;
+        err.status = 409;
         throw(err);
       }
     }
