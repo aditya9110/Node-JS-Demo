@@ -186,7 +186,7 @@ exports.bookSlot async (req, res, next) => {
       throw(err);
     }
   } catch (err) {
-    res.status(401).send({"message": "No such user. Please check your credentials"})
+    res.status(err.status).send({"message": err.message})
     next (err)
   }
 }
