@@ -199,5 +199,29 @@ exports.bookSlot async (req, res, next) => {
 
 ### Delete User
 ```js
-
+exports.deleteUser = async (req, res, next) {
+//Code here
+  try {
+    const emailId = req.params.emailId;
+    let checkUser = await models.userModel.find({ "emailId" emailId }); console.log(checkUser);
+    if (checkUser.length > 0) {
+      let deletedUser = await models.userModel.deleteOne({ "emailId": emailId }); console.log(deletedUser)
+      if (deletedUser) {
+        res.json({ "message": "User is removed" })
+      }
+      else {
+        let err = new Error("Unable to delete the user. Please try again..."); err.status = 400;
+        throw (err);
+      }
+    }
+    else {
+      let err = new Error("No such user. Please check your credentials");
+      err.status = 401;
+      throw (err);
+    }
+  } catch (err) {
+    res.status(err.status).send({ "message": err.message })
+    next(err)
+  }
+}
 ```
