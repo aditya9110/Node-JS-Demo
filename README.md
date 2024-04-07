@@ -162,7 +162,7 @@ exports.bookSlot async (req, res, next) => {
     let checkUser = await models.userModel.find({"emailId": req.body.emailId});
     console.log(checkUser);
     if (checkUser.length > 0 && validator.validateShiftType(shiftType)) {
-      let booking = await models.userModel.findOneAndUpdate({"emailId": req.body.emailId), {"bookings.shiftFrom": shiftFrom, "bookings.shiftTo": shiftTo, "bookings.shiftType": shiftType), (new: true))
+      let booking = await models.userModel.findOneAndUpdate({"emailId": req.body.emailId}, {"bookings.shiftFrom": shiftFrom, "bookings.shiftTo": shiftTo, "bookings.shiftType": shiftType}, {new: true})
       console.log(booking);
       if (booking) {
         res.json({"message": "Booking successful"})
