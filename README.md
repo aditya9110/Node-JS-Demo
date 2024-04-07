@@ -111,7 +111,7 @@ exports.registerUser async (req, res, next) => {
 exports.loginUser = async (req, res, next) => {
   //Code here
   try {
-    let checkUser await models.userModel.find({"emailId": req.body.emailId});
+    let checkUser = await models.userModel.find({"emailId": req.body.emailId});
     console.log(checkUser);
     if (checkUser.length > 0) {
       res.json({"message": "User login successful"})
@@ -155,8 +155,8 @@ exports.viewPackages = async (req, res, next) => {
 exports.bookSlot async (req, res, next) => {
   //Code here
   try {
-    shiftFrom req.body.bookings.shiftFrom
-    shiftTo req.body.bookings.shiftTo
+    shiftFrom = req.body.bookings.shiftFrom
+    shiftTo = req.body.bookings.shiftTo
     shiftType = req.body.bookings.shiftType
 
     let checkUser = await models.userModel.find({"emailId": req.body.emailId});
