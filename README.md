@@ -81,9 +81,9 @@ exports.registerUser async (req, res, next) => {
     var phoneNo = req.body.phoneNo;
 
     if (validator.validateName(name) && validator.validateEmailId(emailId) && validator.validatePassword(password) && validator.validatePhoneNo (phoneNo)) {
-      let userCheck await models.userModel.find({"emailId": emailId})
+      let userCheck = await models.userModel.find({"emailId": emailId})
       if (userCheck.length == 0) {
-        let newUser await models.userModel.create(req.body);
+        let newUser = await models.userModel.create(req.body);
         if (newUser!= null) {
           res.status(201).json({"message": "User registered successfully!!"})
         }
