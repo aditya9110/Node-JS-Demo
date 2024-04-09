@@ -265,5 +265,48 @@ exports.deleteUser = async (req, res, next) {
 "params": [],
 "body": {
 "type": "json",
-
+"raw": "{\" \"name\": \"Aditya\",\" \"emailId\": \"adil@gmail.com\",\" \"password\": \"Adi@1234\",\n \"phoneNo\": 9876543210\n}",
+"form": []
+},
+"tests": []
+},
+{
+"_id":"ae700193-3760-45be-86df-e952004ad6fe",
+"colId": "@m@5b3c1-cc8e-4dcc-930f-15cab0956d7a",
+"containerId":"",
+"url": "http://localhost:3000/bookings",
+"name": "Create Booking".
+"method": "PUT",
+"sortbum: 30000,
+"created": "2024-04-09T18:14:20.5862",
+"modified": "2024-04-09718:14:20.5862",
+"headers": [],
+"params": [],
+"body": {
+"type": "json",
+"raw": "{\n \"emailId\": \"aditya@gmail.com\", \"bookings\": {\n \"shiftFrom\": \"Kalyan\",\n \"shiftTo\": \"Mumbai\",\n \"shiftType\": \"House\"\n }\n}"
+"form": []
+},
+"tests": []
+},
+{
+"_id": "3494ac66-0594-488c-a3eb-12eeb48cc0bf",
+"colId": "8b05b3c1-ccle-4dcc-9307-15cab0956d7a",
+"containerId":"",
+"name": "Login",
+"url": "http://localhost:3000/login",
+"method": "POST",
+"sortNum" 40000,
+"created": "2024-04-09T18:14:30.6152",
+"modified": "2024-04-09710:14:30.6152",
+"headers": [],
+"params": [],
+"body": {
+"type": "json",
+"raw":"{\n \"emailId\": \"aditya@gmail.com\", \"password\": \"Adi@1234\"\n}",
+"form":[]
+},
+"tests":[]
+},
+{
 ```
