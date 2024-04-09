@@ -228,3 +228,42 @@ exports.deleteUser = async (req, res, next) {
   }
 }
 ```
+
+## Postman Collection
+```json
+{
+  "client": "Thunder Client",
+  "collectionName": "Mock",
+  "dateExported": "2024-04-09T18:15:08.4742",
+  "version": "1.1",
+  "folders": [],
+  "requests": [
+    {
+      "_id": "cf4dbc3a-4a52-47e3-80c8-b1955dea596d",
+      "containerId": "",
+      "colId": "8b85b3c1-cc8e-4dcc-930f-15cab0956d7a",
+      "name": "Setupdb",
+      "url": "http://localhost:3000/setupdb",
+      "method": "GET",
+      "sortNum": 10000,
+      "created": "2024-04-09T18:13:57.02",
+      "modified": "2024-04-09T18:13:57.620Z",
+      "headers": [],
+      "params": [],
+      "tests": []
+    },
+{
+"_id": "e7a55014-b764-4229-6634-8ee2fa7e7147",
+"colId": "8b85b3c1-cc8e-4dcc-930f-15cab0956d7a",
+"containerId":"",
+"name": "Register",
+"url": "http://localhost:3000/users",
+"method": "POST",
+"sortNum": 20000,
+"created": "2024-04-09T18:14:12.7212", "modified": "2024-04-09T18:14:12.7212",
+"headers": [],
+"params": [],
+"body": {
+"type": "json",
+
+```
