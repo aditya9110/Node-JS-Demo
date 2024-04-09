@@ -175,7 +175,7 @@ exports.bookSlot async (req, res, next) => {
         res.json({"message": "Booking successful"})
       }
       else {
-        let err = new Error("No such user. Please check your credentials");
+        let err = new Error("Unable to book a slot. please try later...");
         err.status = 401;
         throw(err);
       }
@@ -194,7 +194,35 @@ exports.bookSlot async (req, res, next) => {
 
 ### Cancel Booking
 ```js
-
+exports.cancelBooking = async (req, res, next) {
+//Code here
+  try {
+    const emailId = req.params.emailId;
+    let checkUser = await models.userModel.find({ "emailId": emailId });
+    console.log(checkUser);
+    if (checkUser.length > 0) {
+      let checkCancellation = await models.userModel.updateOne({ "emailId": emailId}, { bookings: null });
+      console.log(checkCancellation)
+      console.log("Ack: " + checkCancellation.acknowledged)
+      if (checkCancellation) {
+        res.json({ "message": "Cancellation successful" })
+      }
+      else {
+        let err = new Error("Cancellation failed! Please try again...");
+        err.status = 400;
+        throw (err);
+      }
+    }
+    else {
+      let err = new Error("No such user. Please check your credentials");
+      err.status = 401;
+      throw (err);
+    }
+  } catch (err) {
+    res.status(err.status).send({ "message": err.message })
+    next(err)
+  }
+}
 ```
 
 ### Delete User
