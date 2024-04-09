@@ -284,7 +284,7 @@ exports.deleteUser = async (req, res, next) {
 "params": [],
 "body": {
 "type": "json",
-"raw": "{\n \"emailId\": \"aditya@gmail.com\", \"bookings\": {\n \"shiftFrom\": \"Kalyan\",\n \"shiftTo\": \"Mumbai\",\n \"shiftType\": \"House\"\n }\n}"
+"raw": "{\n \"emailId\": \"aditya@gmail.com\", \"bookings\": {\n \"shiftFrom\": \"Kalyan\",\n \"shiftTo\": \"Mumbai\",\n \"shiftType\": \"House\"\n }\n}",
 "form": []
 },
 "tests": []
@@ -296,7 +296,7 @@ exports.deleteUser = async (req, res, next) {
 "name": "Login",
 "url": "http://localhost:3000/login",
 "method": "POST",
-"sortNum" 40000,
+"sortNum": 40000,
 "created": "2024-04-09T18:14:30.6152",
 "modified": "2024-04-09710:14:30.6152",
 "headers": [],
