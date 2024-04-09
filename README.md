@@ -201,7 +201,7 @@ exports.cancelBooking = async (req, res, next) {
     let checkUser = await models.userModel.find({ "emailId": emailId });
     console.log(checkUser);
     if (checkUser.length > 0) {
-      let checkCancellation = await models.userModel.updateOne({ "emailId": emailId}, { bookings: null });
+      let checkCancellation = await models.userModel.updateOne({ "emailId": emailId }, { bookings: null });
       console.log(checkCancellation)
       console.log("Ack: " + checkCancellation.acknowledged)
       if (checkCancellation) {
